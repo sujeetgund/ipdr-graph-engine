@@ -1,0 +1,9 @@
+[
+  "duration_sec",
+  "bytes",
+  "hour_of_day",
+  "day_of_week",
+  "time_since_last_session",
+  "bytes_per_second",
+  "port_category_num"
+]
