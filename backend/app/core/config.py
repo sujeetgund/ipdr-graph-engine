@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     DESCRIPTION: str = "A graph-based engine for IPDR data processing"
 
     ARTIFACT_DIR: Path = Path("artifacts")
-    MODEL_PATH: Path = ARTIFACT_DIR / "ensemble_voting_classifier.pkl"
+    MODEL_PATH: Path = ARTIFACT_DIR / "anomaly_detection_clf.pkl"
     FEATURE_ORDER_PATH: Path = ARTIFACT_DIR / "anomaly_detection_feature_order.json"
 
 
