@@ -26,8 +26,9 @@ class AnomalyDetector:
         # In-memory store for last-seen timestamps keyed by phone or src_ip
         self.last_seen = {}
 
-    def cleanup(self):
+    async def cleanup(self):
         """Clean up resources used by the anomaly detector."""
+        logger.info("Cleaning up resources in AnomalyDetector")
         self.model = None
         self.feature_order = None
         self.last_seen = {}
