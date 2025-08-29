@@ -3,6 +3,7 @@ from datetime import datetime
 from typing import Dict, Any
 import math
 
+
 def parse_timestamp(ts_str: str) -> datetime:
     # Expect ISO-like or "YYYY-MM-DD" style; adapt if you have a different format
     # Try flexible parsing:
@@ -13,6 +14,7 @@ def parse_timestamp(ts_str: str) -> datetime:
             pass
     # fallback to fromisoformat
     return datetime.fromisoformat(ts_str)
+
 
 def port_category(dst_port: int) -> int:
     """
@@ -29,10 +31,11 @@ def port_category(dst_port: int) -> int:
         return 2
     return 0 if p < 1024 else 1
 
+
 def compute_features_from_row(
     row: Dict[str, Any],
     last_seen_store: Dict[str, datetime],
-    default_time_since: float = 24*3600.0
+    default_time_since: float = 24 * 3600.0,
 ) -> Dict[str, float]:
     """
     Input row keys expected (case-insensitive):
@@ -79,6 +82,6 @@ def compute_features_from_row(
         "day_of_week": day_of_week,
         "time_since_last_session": time_since_last_session,
         "bytes_per_second": bytes_per_second,
-        "port_category_num": port_category_num
+        "port_category_num": port_category_num,
     }
     return features
