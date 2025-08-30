@@ -114,27 +114,21 @@ class AnomalyDetector:
             return []
 
         # Get probabilities
-        try:
-            probs = (
-                self.model.predict_proba(X)
-                if hasattr(self.model, "predict_proba")
-                else None
-            )
-        except Exception:
-            probs = None
 
-        # Get predictions
-        preds = self.model.predict(X)
+        probs = (
+            self.model.predict_proba(X)
+            if hasattr(self.model, "predict_proba")
+            else None
+        )
 
         results = []
-        for idx, pred in enumerate(preds):
+        for idx, prob in enumerate(probs):
             session_id = sessions_df.iloc[idx]["session_id"]
-            prob = float(probs[idx][1]) if probs is not None else None
             results.append(
                 {
                     "session_id": session_id,
-                    "anomaly": int(pred),
-                    "confidence_score": prob,
+                    "anomaly": 1 if prob[1] > 0.5 else 0,
+                    "confidence_score": float(prob[1]) if probs is not None else None,
                 }
             )
         return results
