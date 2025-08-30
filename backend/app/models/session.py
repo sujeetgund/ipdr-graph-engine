@@ -5,14 +5,11 @@ from typing import Optional
 class Session(BaseModel):
     timestamp: str
     session_id: str
-    src_ip: str
     src_port: int
-    dst_ip: str
     dst_port: int
     protocol: str
     duration_sec: float = Field(..., alias="duration_sec")
     bytes: float
-    phone_number: Optional[str] = None
     cell_tower_lat: Optional[float] = None
     cell_tower_lon: Optional[float] = None
 

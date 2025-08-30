@@ -1,10 +1,16 @@
 [
+  "src_port",
+  "dst_port",
   "duration_sec",
   "bytes",
+  "cell_tower_lat",
+  "cell_tower_lon",
   "hour_of_day",
   "day_of_week",
-  "time_since_last_session",
   "bytes_per_second",
-  "protocol_consistency_score",
-  "port_category_num"
+  "protocol_HTTP",
+  "protocol_HTTPS",
+  "protocol_SIP",
+  "protocol_TCP",
+  "protocol_UDP"
 ]
