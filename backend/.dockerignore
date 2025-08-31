@@ -1,0 +1,60 @@
+# Git
+.git
+.gitignore
+
+# Python caches and bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual envs / environment folders
+.env
+.venv/
+env/
+venv/
+
+# Tests / local dev
+.pytest_cache/
+tests/
+coverage.xml
+htmlcov/
+
+# Jupyter notebooks (not needed in the image)
+*.ipynb
+notebooks/
+**/notebooks/
+
+# Local logs and debug files
+*.log
+*.sqlite
+*.db
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Docker / build artifacts
+docker-compose*.yml
+Dockerfile.local
+
+# Frontend / other top-level folders you don't need in backend image
+../frontend
+frontend/
+scripts/
+docker/
+
+# Large datasets / miscellaneous local files (add more patterns here if you have more)
+*.csv
+*.zip
+*.tar
+*.tar.gz
+
+# If you have any secret/config files locally (do NOT include them)
+secrets.env
+*.pem
+*.key
