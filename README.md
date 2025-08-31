@@ -661,10 +661,16 @@ Traditional IPDR analysis tools are either:
 - 🎥 **Demo Video:** [Watch on YouTube](https://youtube.com/watch?v=demo-video)
 
 ### **Development Resources**
+
 - 📖 **Development Guide:** [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)
-- 🧪 **Testing Guide:** [docs/TESTING.md](docs/TESTING.md)  
+- 🧪 **Testing Guide:** [docs/TESTING.md](docs/TESTING.md)
 - 🚀 **Deployment Guide:** [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
 - 🤝 **Contributing:** [CONTRIBUTING.md](CONTRIBUTING.md)
+
+### **Research & Methodology**
+- 📊 **Model Training Notebooks:** Main notebooks are in the `Anomoly/` directory (e.g., `Anomoly/anomaly_detect.ipynb`)
+- 📈 **Performance Benchmarks:** [docs/BENCHMARKS.md](docs/BENCHMARKS.md) (based on experiments in `Anomoly/`)
+- 🔬 **Research Papers:** [docs/RESEARCH.md](docs/RESEARCH.md)
 
 ### **Research & Methodology**
 - 📊 **Model Training Notebooks:** [ml-models/notebooks/](ml-models/notebooks/)
