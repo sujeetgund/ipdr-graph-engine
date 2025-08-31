@@ -1,4 +1,4 @@
----
+
 
 ## ✨ Features
 
@@ -10,7 +10,7 @@
 - **Secure & Auditable:** All data is encrypted, with audit logs and role-based access control.
 - **3D/2D Visualization:** Modern, interactive graph visualizations for deep investigation.
 
----
+
 
 ## 🖥️ Screenshots
 
@@ -26,7 +26,7 @@
 	<i>Anomaly Detection Results</i>
 </div>
 
----
+
 
 ## 🏗️ Installation & Setup
 
@@ -49,7 +49,7 @@ npm install
 npm run dev
 ```
 
----
+
 
 ## 🤝 Contribution Guide
 
@@ -61,7 +61,7 @@ We welcome contributions! To get started:
 
 Please see [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
 
----
+
 
 ## ❓ FAQ
 
@@ -77,7 +77,7 @@ A: Yes, all uploaded data is encrypted and access is controlled by user roles.
 **Q: Can I run this on my own infrastructure?**
 A: Yes, follow the installation steps above to deploy locally or on your server.
 
----
+
 
 ## 📄 License
 
