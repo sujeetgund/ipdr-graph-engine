@@ -1,5 +1,32 @@
 # 🔍 IPDR Graph Engine
 
+## 📑 Table of Contents
+
+- [Problem Statement](#-problem-statement)
+- [Our Solution](#-our-solution)
+- [Solution Workflow](#-solution-workflow)
+- [Core Features](#-core-features)
+- [Application Screenshots](#️-application-screenshots)
+- [System Architecture](#-system-architecture)
+- [Technology Stack](#-technology-stack)
+- [Installation & Setup](#-installation--setup)
+- [API Documentation](#-api-documentation)
+- [AI/ML Model Details](#-aiml-model-details)
+- [User Interface Features](#-user-interface-features)
+- [Project Structure](#-project-structure)
+- [Quick Start Guide](#-quick-start-guide)
+- [Detailed Use Cases](#-detailed-use-cases)
+- [Key Achievements & Innovations](#-key-achievements--innovations)
+- [Performance Metrics](#-performance-metrics)
+- [FAQ](#-frequently-asked-questions)
+- [Hackathon Impact](#-hackathon-impact)
+- [Resources & Links](#-resources--links)
+- [Team Brigade](#-team-brigade)
+- [Security & Compliance](#-security--compliance)
+- [Future Roadmap](#-future-roadmap)
+- [License & Legal](#-license--legal)
+- [Contact](#contact)
+
 <div align="center">
   <img src="https://img.icons8.com/fluency/96/graph-report.png" width="120"/>
   <br/>
@@ -166,47 +193,38 @@ flowchart TD
 
 ```mermaid
 graph TB
-    subgraph "🌐 Frontend Layer"
+    subgraph Frontend_Layer
         A[Next.js 14 + React 18]
         A1[File Upload Interface]
-        A2[Interactive Visualizations] 
+        A2[Interactive Visualizations]
         A3[Analytics Dashboard]
         A4[Report Management]
     end
-    
-    subgraph "⚡ API Layer"  
+    subgraph API_Layer
         B[FastAPI Python Backend]
-        B1[/upload - File Processing]
-        B2[/analyze - AI Inference]
-        B3[/visualize - Graph Data]
-        B4[/reports - PDF Generation]
+        B1[upload - File Processing]
+        B2[analyze - AI Inference]
+        B3[visualize - Graph Data]
+        B4[reports - PDF Generation]
     end
-    
-    subgraph "🧠 AI/ML Layer"
-        C[Anomaly Detection Engine<br/>89.25% Accuracy]
+    subgraph AI_ML_Layer
+        C[Anomaly Detection Engine (89.25% Accuracy)]
         C1[Data Preprocessing]
         C2[CatBoost Model]
         C3[Neural Networks]
         C4[Scoring Algorithm]
     end
-    
-    subgraph "🗄️ Data Layer"
-        D[MongoDB Atlas<br/>Encrypted Storage]
+    subgraph Data_Layer
+        D[MongoDB Atlas (Encrypted Storage)]
         D1[IPDR Collections]
         D2[Session Metadata]
         D3[Analysis Results]
         D4[User Management]
     end
-    
     A --> B
-    B --> C  
+    B --> C
     C --> D
     D -.-> B
-    
-    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
-    style B fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px
-    style C fill:#e8f5e8,stroke:#388e3c,stroke-width:3px
-    style D fill:#fff3e0,stroke:#f57c00,stroke-width:3px
 ```
 
 ---
@@ -406,37 +424,48 @@ flowchart LR
 
 ```
 ipdr-graph-engine/
-├── 📂 backend/                 # FastAPI backend application
-│   ├── 📂 app/
-│   │   ├── 📂 api/            # API route handlers
-│   │   ├── 📂 core/           # Configuration and security
-│   │   ├── 📂 models/         # Database models (MongoDB)
-│   │   ├── 📂 services/       # Business logic services
-│   │   ├── 📂 ml/             # Machine learning modules
-│   │   └── 📄 main.py         # FastAPI application entry
-│   ├── 📂 tests/              # Backend test suites
-│   ├── 📄 requirements.txt    # Python dependencies
-│   └── 📄 Dockerfile         # Container configuration
-├── 📂 frontend/               # Next.js frontend application  
-│   ├── 📂 src/
-│   │   ├── 📂 components/     # Reusable React components
-│   │   ├── 📂 pages/          # Next.js pages and routing
-│   │   ├── 📂 hooks/          # Custom React hooks
-│   │   ├── 📂 utils/          # Utility functions
-│   │   └── 📂 styles/         # Tailwind CSS configurations
-│   ├── 📂 public/             # Static assets
-│   ├── 📄 package.json        # Node.js dependencies
-│   └── 📄 next.config.js      # Next.js configuration
-├── 📂 ml-models/              # Machine learning artifacts
-│   ├── 📂 notebooks/          # Jupyter research notebooks
-│   ├── 📂 data/               # Training and test datasets
-│   ├── 📂 models/             # Trained model files
-│   └── 📂 scripts/            # Training and evaluation scripts
-├── 📂 docs/                   # Documentation and guides
-├── 📂 scripts/                # Deployment and utility scripts
-├── 📄 docker-compose.yml      # Multi-service deployment
-├── 📄 README.md               # Project documentation
-└── 📄 .github/workflows/      # CI/CD pipeline definitions
+├── Anomoly/                  # Notebooks, CatBoost models, experiment artifacts
+│   ├── anomaly_detect.ipynb
+│   ├── best_catboost_model.cbm
+│   ├── lemonrice_with_phone.csv
+│   ├── catboost_info/
+│   │   ├── catboost_training.json
+│   │   ├── learn_error.tsv
+│   │   ├── time_left.tsv
+│   │   └── learn/
+│   │       └── events.out.tfevents
+│   └── keras_tuner_dir/
+├── backend/                  # FastAPI backend application
+│   ├── app/
+│   │   ├── api/
+│   │   ├── core/
+│   │   ├── main.py
+│   │   ├── models/
+│   │   ├── services/
+│   │   ├── utils/
+│   │   └── __init__.py
+│   ├── artifacts/
+│   ├── Dockerfile
+│   └── requirements.txt
+├── frontend/                 # Next.js frontend application
+│   ├── public/
+│   ├── src/
+│   │   ├── app/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── lib/
+│   │   └── types/
+│   ├── package.json
+│   ├── next.config.ts
+│   ├── tailwind.config.ts
+│   └── tsconfig.json
+├── notebooks/                # Jupyter research notebooks
+│   ├── ciis.ipynb
+│   └── ciis_anomaly_detection.ipynb
+├── scripts/                  # Deployment and utility scripts
+│   └── deploy_with_cloud_build.ps1
+├── .gitignore
+└── README.md
 ```
 
 ---
@@ -648,17 +677,18 @@ Traditional IPDR analysis tools are either:
 
 <div align="center">
 
-| Role | Responsibility | Technologies |
-|------|---------------|--------------|
-| **🎯 Project Lead** | Architecture & Strategy | System Design, Project Management |
-| **⚛️ Frontend Developer** | User Interface & UX | React, Next.js, Tailwind CSS, Three.js |
-| **🐍 Backend Developer** | API & Infrastructure | FastAPI, Python, MongoDB, Docker |
-| **🧠 ML Engineer** | AI Models & Data Science | CatBoost, TensorFlow, Pandas, NumPy |
-| **🎨 UI/UX Designer** | Design & User Experience | Figma, User Research, Accessibility |
+
+| Name            | Role(s)                        | Responsibilities/Tech |
+|-----------------|--------------------------------|----------------------|
+| Nithin N        | ML & Backend                   | CatBoost, FastAPI, Python, Model Training |
+| Arpit           | Frontend                       | React, Next.js, UI/UX, Visualization      |
+| Sujith Gund     | Frontend & Backend             | Full Stack, Integration, API, DevOps      |
+| Navnit Kumar M  | Frontend & Support             | UI, Testing, Documentation, Collaboration |
+| Mansi           | PPT & Video, Support           | Presentation, Demo Video, Team Support    |
 
 **University:** VIT Bhopal University  
 **Program:** Computer Science & Engineering  
-**Experience:** Combined 15+ years in software development
+**Experience:** Combined 1+ years in software development
 
 </div>
 
@@ -710,6 +740,20 @@ Traditional IPDR analysis tools are either:
 ---
 
 ## 📄 License & Legal
+
+---
+
+## 📬 Contact
+
+For questions, support, or feedback, please open an issue on GitHub or contact:
+
+- Nithin N (ML/Backend): [nithin.email@example.com](mailto:nithin.email@example.com)
+- Arpit (Frontend): [arpit.email@example.com](mailto:arpit.email@example.com)
+- Sujith Gund (Full Stack): [sujith.email@example.com](mailto:sujith.email@example.com)
+- Navnit Kumar M (Frontend/Support): [navnit.email@example.com](mailto:navnit.email@example.com)
+- Mansi (PPT/Video/Support): [mansi.email@example.com](mailto:mansi.email@example.com)
+
+Or visit the [GitHub Issues page](https://github.com/sujeetgund/ipdr-graph-engine/issues) for help and suggestions.
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
