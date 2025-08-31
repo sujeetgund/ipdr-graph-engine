@@ -208,14 +208,14 @@ graph TB
         B4[reports - PDF Generation]
     end
     subgraph AI_ML_Layer
-        C[Anomaly Detection Engine (89.25% Accuracy)]
+        C[Anomaly Detection Engine - 89.25 Percent Accuracy]
         C1[Data Preprocessing]
         C2[CatBoost Model]
         C3[Neural Networks]
         C4[Scoring Algorithm]
     end
     subgraph Data_Layer
-        D[MongoDB Atlas (Encrypted Storage)]
+        D[MongoDB Atlas - Encrypted Storage]
         D1[IPDR Collections]
         D2[Session Metadata]
         D3[Analysis Results]
