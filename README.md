@@ -154,7 +154,8 @@ flowchart TD
 <img width="800" alt="Analysis Dashboard" src="https://github.com/user-attachments/assets/0e35c604-b176-4a3a-a087-e7bd41657e52" />
 
 ### 🎯 **2D Network Visualization**
-<img width="800" alt="2D Graph Visualization" src="https://github.com/user-attachments/assets/b7f98477-eac8-4bee-a070-58572f35de75" />
+
+<img width="800" alt="2D Graph Visualization" src="https://github.com/user-attachments/assets/1e286596-a5f9-47a2-90f2-f47c76c9f340" />
 <i>Interactive 2D network graph showing communication patterns</i>
 
 ### 🌐 **3D Network Exploration**
