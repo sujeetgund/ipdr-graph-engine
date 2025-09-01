@@ -6,6 +6,8 @@ import { parseCsv, parseJson, parseExcel } from '@/lib/parsers';
 import { Report } from '@/types/ipdr';
 import { Collection, ObjectId, WithId } from 'mongodb';
 import { getDb } from '@/lib/mongodb';
+import { encrypt, decrypt } from '@/lib/crypto';
+
 
 interface AnomalyPrediction {
   session_id: string;
@@ -69,9 +71,13 @@ export async function processAndAnalyzeIpdr(fileContent: string, fileName: strin
         };
     });
     
+    const authToken = process.env.AUTH_TOKEN_SECRET;
     const response = await fetch('https://ipdr-graph-engine-api-1004676663046.us-central1.run.app/api/v1/anomalies/predict', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`
+      },
       body: JSON.stringify(apiPayload),
     });
 
@@ -104,18 +110,22 @@ export async function processAndAnalyzeIpdr(fileContent: string, fileName: strin
       }
       return edge;
     });
+    
+    // Encrypt the sensitive data before storing
+    const encryptedNodes = await encrypt(JSON.stringify(graphData.nodes));
+    const encryptedEdges = await encrypt(JSON.stringify(updatedEdges));
 
     finalReport = {
       fileName: fileName,
       createdAt: createdAt,
       sessionCount: graphData.edges.length,
       anomalyCount: anomalyCount,
-      nodes: graphData.nodes,
-      edges: updatedEdges,
+      nodes: encryptedNodes as any, // Store as encrypted string
+      edges: encryptedEdges as any, // Store as encrypted string
       summary: `Analysis complete. Found ${anomalyCount} anomalous session(s).`,
     };
     
-    console.log("Report generated successfully.");
+    console.log("Report generated successfully with encryption.");
 
   } catch (error) {
     console.error("Error during IPDR analysis:", error);
@@ -123,14 +133,19 @@ export async function processAndAnalyzeIpdr(fileContent: string, fileName: strin
          throw error;
     }
    
-    console.warn("Anomaly detection failed. Proceeding without anomaly data.");
+    console.warn("Anomaly detection failed. Proceeding without anomaly data, but with encryption.");
+    
+    // Encrypt the sensitive data even if API fails
+    const encryptedNodes = await encrypt(JSON.stringify(graphData.nodes));
+    const encryptedEdges = await encrypt(JSON.stringify(graphData.edges));
+
     finalReport = {
         fileName: fileName,
         createdAt: createdAt,
         sessionCount: graphData.edges.length,
         anomalyCount: 0,
-        nodes: graphData.nodes,
-        edges: graphData.edges,
+        nodes: encryptedNodes as any, // Store as encrypted string
+        edges: encryptedEdges as any, // Store as encrypted string
         summary: `Analysis complete. Anomaly detection service could not be reached.`,
     };
   }
@@ -138,10 +153,16 @@ export async function processAndAnalyzeIpdr(fileContent: string, fileName: strin
   const reportsCollection = await getReportsCollection();
   const result = await reportsCollection.insertOne(finalReport);
   
+  // Decrypt for immediate return to client
+  const decryptedNodes = JSON.parse(await decrypt(finalReport.nodes as any));
+  const decryptedEdges = JSON.parse(await decrypt(finalReport.edges as any));
+
   return {
     ...finalReport,
+    id: result.insertedId.toHexString(),
     createdAt: finalReport.createdAt.toISOString(),
-    id: result.insertedId.toHexString()
+    nodes: decryptedNodes,
+    edges: decryptedEdges,
   };
 }
 
@@ -178,11 +199,32 @@ export async function getReportById(id: string): Promise<Report | null> {
   if (!report) return null;
 
   const { _id, ...rest } = report as WithId<Omit<Report, 'id'>>;
-  return {
-    ...rest,
-    id: _id.toHexString(),
-    createdAt: (rest.createdAt as Date).toISOString(),
-  } as Report;
+  
+  try {
+    // Decrypt nodes and edges before returning
+    const decryptedNodes = JSON.parse(await decrypt(rest.nodes as any));
+    const decryptedEdges = JSON.parse(await decrypt(rest.edges as any));
+
+    return {
+      ...rest,
+      id: _id.toHexString(),
+      createdAt: (rest.createdAt as Date).toISOString(),
+      nodes: decryptedNodes,
+      edges: decryptedEdges,
+    } as Report;
+  } catch (e) {
+    console.error('Failed to decrypt report data:', e);
+    // Return report with a clear error state if decryption fails
+    return {
+      ...rest,
+      id: _id.toHexString(),
+      createdAt: (rest.createdAt as Date).toISOString(),
+      nodes: [],
+      edges: [],
+      summary: "Error: Could not decrypt report data. Check encryption key.",
+      anomalyCount: -1, // Indicate an error state
+    } as Report;
+  }
 }
 
 

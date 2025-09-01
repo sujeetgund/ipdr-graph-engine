@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/f42f6600-98f3-4e78-aafe-1be755a1c0ce" alt="IPDR Graph Engine Logo" width="200"/>
+  <img src="./assets/icon.png" alt="IPDR Graph Engine Logo" width="200"/>
   <br/>
   <h1><b>IPDR Graph Engine</b></h1>
   <p><b>A web-based investigative platform that transforms complex telecommunications IPDR data into actionable intelligence through ML-powered anomaly detection and interactive visualizations.</b></p>
@@ -35,7 +35,7 @@ The key  highlights include:
 - **Enterprise-grade security** with end-to-end encryption
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/93a6e252-8453-425f-9e45-7dd966389d64" alt="Demo Video" width="800"/>
+  <img src="./assets/3d-demo.gif" alt="Demo Gif" width="800"/>
 </div>
 
 ## Key Features
