@@ -18,7 +18,7 @@
     <img src="https://img.shields.io/badge/🏆_CIIS_2025-Hackathon_Project-orange?style=for-the-badge" alt="CIIS 2025" />
   </a>
   
-  <img src="https://img.shields.io/badge/Model%20Accuracy-94.45%25-success?style=for-the-badge&logo=tensorflow" alt="Model Accuracy" />
+  <img src="https://img.shields.io/badge/Model%20Accuracy-94.16%25-success?style=for-the-badge&logo=tensorflow" alt="Model Accuracy" />
 </div>
 
 ## Overview
@@ -29,7 +29,7 @@ Telecommunications companies generate massive IPDR volumes daily. Manual analysi
 
 Our platform ingests heterogeneous IPDR logs, normalizes data, constructs communication graphs, applies ML-based anomaly detection, and delivers interactive visualizations with comprehensive reporting—all secured with end-to-end encryption.
 The key  highlights include:
-- **94.45% accuracy** in ML-powered anomaly detection
+- **94.16% accuracy** in ML-powered anomaly detection
 - **Real-time processing** of large IPDR datasets  
 - **Multi-format support** (CSV, JSON, Excel)
 - **Enterprise-grade security** with end-to-end encryption
